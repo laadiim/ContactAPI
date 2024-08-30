@@ -1,34 +1,32 @@
 package com.Contacts.Contacts.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import org.hibernate.annotations.UuidGenerator;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name = "users")
 public class User {
-	@Id
-	@UuidGenerator
-	@Column(name = "id", unique = true, updatable = false)
-	private Long userID;
-	private String name;
-	private String email;
-	private String address;
-	private String phoneNumber;
-	private String password;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Use the appropriate strategy
+    @Column(name = "id", unique = true, updatable = false)
+    private Long userID; // This should match the repository's expectation
 
+    private String name;
+    private String email;
+    private String address;
+    private String phoneNumber;
+    private String password;
+    private String photoURL;
 
-	private String photoURL;
-
-	private Long[] contacts;
-
+    private List<Long> contacts = new ArrayList<Long>();
 	public User() {
     }
 
-	public User(Long userID, String name, String email, String address, String phoneNumber, String password, String photoURL, Long[] contacts) {
+	public User(Long userID, String name, String email, String address, String phoneNumber, String password, String photoURL, List<Long> contacts) {
 		this.userID = userID;
 		this.name = name;
 		this.email = email;
@@ -95,11 +93,11 @@ public class User {
 		this.password = password;
 	}
 
-	public Long[] getContacts() {
+	public List<Long> getContacts() {
 		return contacts;
 	}
 
-	public void setContacts(Long[] contacts) {
+	public void setContacts(List<Long> contacts) {
 		this.contacts = contacts;
 	}
 }
