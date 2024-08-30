@@ -13,7 +13,7 @@ public class User {
 	@Id
 	@UuidGenerator
 	@Column(name = "id", unique = true, updatable = false)
-	private String userID;
+	private Long userID;
 	private String name;
 	private String email;
 	private String address;
@@ -23,12 +23,12 @@ public class User {
 
 	private String photoURL;
 
-	private String[] contacts;
+	private Long[] contacts;
 
 	public User() {
     }
 
-	public User(String userID, String name, String email, String address, String phoneNumber, String password, String photoURL, String[] contacts) {
+	public User(Long userID, String name, String email, String address, String phoneNumber, String password, String photoURL, Long[] contacts) {
 		this.userID = userID;
 		this.name = name;
 		this.email = email;
@@ -47,11 +47,11 @@ public class User {
 		this.photoURL = photoURL;
 	}
 
-	public String getUserID() {
+	public Long getUserID() {
 		return userID;
 	}
 
-	public void setUserID(String userID) {
+	public void setUserID(Long userID) {
 		this.userID = userID;
 	}
 
@@ -95,11 +95,11 @@ public class User {
 		this.password = password;
 	}
 
-	public String[] getContacts() {
+	public Long[] getContacts() {
 		return contacts;
 	}
 
-	public void setContacts(String[] contacts) {
+	public void setContacts(Long[] contacts) {
 		this.contacts = contacts;
 	}
 }

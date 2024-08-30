@@ -1,15 +1,8 @@
 package com.Contacts.Contacts.services;
 
-import com.Contacts.Contacts.repository.UserRepository;
-import org.springframework.stereotype.Service;
+import com.Contacts.Contacts.dto.UserDTO;
 
-@Service
-public class UserService {
-    private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    
+public interface UserService {
+    UserDTO getUserById(Long id);
+    UserDTO createUser(UserDTO userDTO);
 }
